@@ -1,7 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  webpack: (config) => {
+    config.externals = {
+      bcrypt: 'commonjs bcrypt', // Ensures bcrypt is treated as a CommonJS module
+    };
+    return config;
+  },
 };
 
 export default nextConfig;
